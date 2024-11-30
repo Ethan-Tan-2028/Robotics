@@ -1,0 +1,25 @@
+public class Point {
+  public final double x;
+  public final double y;
+  public Point(double x, double y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  public static Point centerOfMass(Point[] points) //Point array/list
+  {
+ new Point(7, 4);
+ new Point(3, 5);
+ 
+
+    double SumX=0;
+    double SumY=0;
+    for(Point point:points)//For every point with the TYPE POINT in the point array "points"
+    {
+      SumX+=point.x;
+      SumY+=point.y;
+    }
+   // return new Point(SumX / points.length, SumY / points.length);
+   return new Point(SumX/points.length, SumY/points.length);
+  }
+}
