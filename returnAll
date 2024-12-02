@@ -21,10 +21,8 @@ public class LibararyItem {
     public void returnItem() {
         isCheckedOut = false;
     }
-    public static void returnAll(LibararyItem[] items) {
-        // Iterate over each LibraryItem in the array
+  *  public static void returnAll(LibararyItem[] items) {
         for (LibararyItem itemId : items) {
-            // Call a method on LibraryItem to return it (assuming such a method exists)
             itemId.returnItem();
         }
     }
