@@ -1,0 +1,84 @@
+--------------------------------------------------------
+public class LibararyItem {
+    public final String title;
+    public final String itemId;
+    
+    protected boolean isCheckedOut = false;
+
+    public LibararyItem(String title, String itemId) {
+        this.title = title;
+        this.itemId = itemId;
+    }
+
+	public boolean available() {
+		return !isCheckedOut;
+	}
+
+    public void checkOut() {
+        isCheckedOut = true;
+    }
+
+    public void returnItem() {
+        isCheckedOut = false;
+    }
+    public static void returnAll(LibararyItem[] items) {
+        // Iterate over each LibraryItem in the array
+        for (LibararyItem itemId : items) {
+            // Call a method on LibraryItem to return it (assuming such a method exists)
+            itemId.returnItem();
+        }
+    }
+}
+-----------------------------------------------------------------------------
+public class Book extends LibararyItem {
+    public final String author;
+    public final int pageCount;
+
+    public Book(String title, String itemId, String author, int pageCount) {
+        super(title, itemId);
+        this.author = author;
+        this.pageCount = pageCount;
+    }
+
+	@Override
+    public String toString() {
+        return "Book: " + title + " by " + author + ", " + 
+		        pageCount + " pages";
+    }
+}
+----------------------------------------------------------------------------
+public class DVD extends LibararyItem {
+    public final double runtime;
+
+    public DVD(String title, String itemId, double runtime) {
+        super(title, itemId);
+        this.runtime = runtime;
+    }
+
+    @Override
+    public String toString() {
+        return "DVD: " + title + ", Runtime: " + runtime + " minutes";
+    }
+}
+----------------------------------------------------------------------------
+public class Main {
+      public static void returnAll(LibararyItem[] items) {
+
+
+              
+        
+            
+      }
+      public static void main(String[] args) {
+         Book book1 = new Book("Book 1","Harry Potter", "J.K Rowling", 3333);
+         Book book2 = new Book("Book 2","Percy Jackson", "Rick Riordan", 3333);
+         Book book3 = new Book("Book 3","Lord of the Rings", "Tolkein", 3333);
+         DVD dvd1 = new DVD("Lion King", "001", 3000); 
+         LibararyItem[] items = {book1, book2, book3, dvd1};
+         returnAll(items);
+         for (LibararyItem item : items) {
+            System.out.println(item.title + " available: " + item.available());
+        }
+
+
+      }
