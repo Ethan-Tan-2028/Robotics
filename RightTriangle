@@ -1,0 +1,62 @@
+public class RightTriangle implements Main.Shape{
+	public final Point corner;
+	public final double sideLengthA;
+    public final double sideLengthB;
+    public  double hypotonouse;
+
+
+	public RightTriangle(Point corner, double sideLengthA, double sideLengthB,double hypotonouse) {
+		this.corner = corner;
+		this.sideLengthA = Math.abs(sideLengthA);
+        this.sideLengthB = Math.abs(sideLengthB);
+        this.hypotonouse = Math.sqrt((sideLengthA*sideLengthA)+(sideLengthB*sideLengthB));
+	}
+	public double area() {
+        return ((sideLengthA*sideLengthB)/2);
+            }
+    
+    public double perimeter() {
+       return (sideLengthA+sideLengthB + hypotonouse);
+            }
+    public static Boolean similar(RightTriangle triangle1, RightTriangle triangle2){
+        return (triangle1.sideLengthA * triangle2.sideLengthB == triangle1.sideLengthB * triangle2.sideLengthA) && // Check for side proportions
+        (triangle1.sideLengthA * triangle2.hypotonouse == triangle1.hypotonouse * triangle2.sideLengthA) && // Check for side A and hypotenuse proportions
+        (triangle1.sideLengthB * triangle2.hypotonouse == triangle1.hypotonouse * triangle2.sideLengthB); // Check for side B and hypotenuse proportions
+      //  return (triangle1.sideLengthA==triangle2.sideLengthA) || triangle1.sideLengthB==triangle2.sideLengthB || (triangle1.hypotonouse==triangle2.hypotonouse);
+
+    }
+
+    public String toString() {
+        return "RightTriangle with corner " + corner + ", side lengths " + sideLengthA +
+               " and " + sideLengthB + ", and hypotenuse " + hypotonouse;
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+public class Main {
+   public interface Shape {
+      /**
+       * @return the area of the shape
+       */
+      double area();
+  
+      /**
+       * @return the perimeter of the shape
+       */
+      double perimeter();
+  }
+    public static void main(String[] args) {
+      Point corner1 = new Point (0,0);
+RightTriangle A = new RightTriangle(corner1, 2, 3, 0);
+RightTriangle B = new RightTriangle(corner1, 9, 7, 0);
+RightTriangle C = new RightTriangle(corner1, 4, 6, 0);
+RightTriangle D = new RightTriangle(corner1, -2, -3, 0);
+
+System.out.println(A+"                                                                  "+B);
+System.err.println(A.similar(A, B));
+System.err.println(A.similar(A, C));
+System.err.println(A.similar(A, D));
+
+
+    }
+
+}
